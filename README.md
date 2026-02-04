@@ -65,53 +65,18 @@ PCI DSS requirement mapping:
 4. Processed alerts are indexed in Elasticsearch.
 5. Kibana dashboards provide visualization for SOC analysis, threat hunting, compliance, and vulnerability assessment.
 
-## Architecture Diagram
-
-The following diagram represents the high-level architecture of the Wazuh SOC Lab and the flow of security data:
-
-+----------------------+
-| Windows 11 Endpoint  |
-| (Event & Security    |
-| Logs)                |
-+----------+-----------+
-           |
-           v
-+----------------------+
-| Wazuh Agent          |
-| Log Collection &     |
-| Forwarding           |
-+----------+-----------+
-           |
-           v
-+----------------------+
-| Wazuh Manager        |
-| Analysis, Rules &    |
-| Alert Generation     |
-+----------+-----------+
-           |
-           v
-+----------------------+
-| Elasticsearch        |
-| Log Storage &        |
-| Indexing             |
-+----------+-----------+
-           |
-           v
-+----------------------+
-| Kibana               |
-| Dashboards &         |
-| Visualizations       |
-+----------+-----------+
-           |
-           v
-+----------------------+
-| SOC Analyst          |
-| Threat Hunting,      |
-| Alerts, Compliance   |
-+----------------------+
-
-
-
++-----------------------+          +-----------------------+          +-----------------------+
+|  Windows 11 Endpoint  |          |     Wazuh Manager     |          |     Elasticsearch     |
+|  (Event & Security    | -------->|  Analysis, Rules &    | -------->|    Log Storage &      |
+|        Logs)          |  Agent   |   Alert Generation    |          |       Indexing        |
++-----------------------+          +-----------------------+          +-----------------------+
+                                                                                  |
+                                                                                  v
++-----------------------+          +-----------------------+          +-----------------------+
+|      SOC Analyst      |          |        Kibana         |          |       Filebeat        |
+|  Threat Hunting,      | <--------|    Dashboards &       | <--------|    (Internal Data     |
+|  Alerts, Compliance   |          |    Visualizations     |          |       Shipper)        |
++-----------------------+          +-----------------------+          +-----------------------+
 
 
 ## Dashboard Screenshots
