@@ -55,50 +55,7 @@ PCI DSS requirement mapping:
 - CVE identification  
 - OS and package-level vulnerability insights
  
-## Architecture Diagram
 
-The following diagram represents the high-level architecture of the Wazuh SOC Lab and the flow of security data:
-
-+----------------------+
-|  Windows 11 Endpoint |
-|  (Event & Security   |
-|        Logs)         |
-+----------+-----------+
-           |
-           v
-+----------------------+
-|     Wazuh Agent      |
-|  Log Collection &    |
-|   Forwarding         |
-+----------+-----------+
-           |
-           v
-+----------------------+
-|    Wazuh Manager     |
-|  Analysis, Rules &   |
-|  Alert Generation    |
-+----------+-----------+
-           |
-           v
-+----------------------+
-|   Elasticsearch      |
-|  Log Storage &       |
-|  Indexing            |
-+----------+-----------+
-           |
-           v
-+----------------------+
-|      Kibana          |
-|  Dashboards &        |
-|  Visualizations      |
-+----------+-----------+
-           |
-           v
-+----------------------+
-|     SOC Analyst      |
-| Threat Hunting,      |
-| Alerts, Compliance   |
-+----------------------+
 
 
 **Data Flow Summary:**
@@ -107,6 +64,54 @@ The following diagram represents the high-level architecture of the Wazuh SOC La
 3. The Wazuh manager analyzes events using rules and MITRE ATT&CK mappings.
 4. Processed alerts are indexed in Elasticsearch.
 5. Kibana dashboards provide visualization for SOC analysis, threat hunting, compliance, and vulnerability assessment.
+
+## Architecture Diagram
+
+The following diagram represents the high-level architecture of the Wazuh SOC Lab and the flow of security data:
+
++----------------------+
+| Windows 11 Endpoint  |
+| (Event & Security    |
+| Logs)                |
++----------+-----------+
+           |
+           v
++----------------------+
+| Wazuh Agent          |
+| Log Collection &     |
+| Forwarding           |
++----------+-----------+
+           |
+           v
++----------------------+
+| Wazuh Manager        |
+| Analysis, Rules &    |
+| Alert Generation     |
++----------+-----------+
+           |
+           v
++----------------------+
+| Elasticsearch        |
+| Log Storage &        |
+| Indexing             |
++----------+-----------+
+           |
+           v
++----------------------+
+| Kibana               |
+| Dashboards &         |
+| Visualizations       |
++----------+-----------+
+           |
+           v
++----------------------+
+| SOC Analyst          |
+| Threat Hunting,      |
+| Alerts, Compliance   |
++----------------------+
+
+
+
 
 
 ## Dashboard Screenshots
