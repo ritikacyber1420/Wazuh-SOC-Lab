@@ -57,51 +57,13 @@ PCI DSS requirement mapping:
 
 ## Architecture Diagram
 
-+---------------------+
-| Windows 11 Endpoint |
-| (Event & Security   |
-| Logs)               |
-+----------+----------+
-           |
-           v
-+---------------------+
-| Wazuh Agent         |
-| Log Collection &    |
-| Forwarding          |
-+----------+----------+
-           |
-           v
-+---------------------+
-| Wazuh Manager       |
-| Analysis, Rules &   |
-| Alert Generation   |
-+----------+----------+
-           |
-           v
-+---------------------+
-| Elasticsearch       |
-| Log Storage &       |
-| Indexing            |
-+----------+----------+
-           |
-           v
-+---------------------+
-| Kibana              |
-| Dashboards &        |
-| Visualizations      |
-+----------+----------+
-           |
-           v
-+---------------------+
-| SOC Analyst         |
-| Threat Hunting,     |
-| Alerts, Compliance  |
-+---------------------+
+The Wazuh SOC Lab follows this security data flow:
 
-
- 
-
-
+1. Windows 11 endpoints generate security and event logs.
+2. The Wazuh Agent collects and forwards logs from the endpoint.
+3. The Wazuh Manager analyzes events using rules and MITRE ATT&CK mappings.
+4. Processed alerts are indexed and stored in Elasticsearch.
+5. Kibana dashboards provide visualization for SOC analysts, enabling threat hunting, alert analysis, compliance monitoring, and vulnerability assessment.
 
 **Data Flow Summary:**
 1. Security and system logs are generated on the Windows 11 endpoint.
