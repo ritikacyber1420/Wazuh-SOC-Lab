@@ -54,6 +54,51 @@ PCI DSS requirement mapping:
 - Severity-based vulnerability categorization  
 - CVE identification  
 - OS and package-level vulnerability insights
+
+## Architecture Diagram
+
++---------------------+
+| Windows 11 Endpoint |
+| (Event & Security   |
+| Logs)               |
++----------+----------+
+           |
+           v
++---------------------+
+| Wazuh Agent         |
+| Log Collection &    |
+| Forwarding          |
++----------+----------+
+           |
+           v
++---------------------+
+| Wazuh Manager       |
+| Analysis, Rules &   |
+| Alert Generation   |
++----------+----------+
+           |
+           v
++---------------------+
+| Elasticsearch       |
+| Log Storage &       |
+| Indexing            |
++----------+----------+
+           |
+           v
++---------------------+
+| Kibana              |
+| Dashboards &        |
+| Visualizations      |
++----------+----------+
+           |
+           v
++---------------------+
+| SOC Analyst         |
+| Threat Hunting,     |
+| Alerts, Compliance  |
++---------------------+
+
+
  
 
 
@@ -64,19 +109,6 @@ PCI DSS requirement mapping:
 3. The Wazuh manager analyzes events using rules and MITRE ATT&CK mappings.
 4. Processed alerts are indexed in Elasticsearch.
 5. Kibana dashboards provide visualization for SOC analysis, threat hunting, compliance, and vulnerability assessment.
-
-+-----------------------+          +-----------------------+          +-----------------------+
-|  Windows 11 Endpoint  |          |     Wazuh Manager     |          |     Elasticsearch     |
-|  (Event & Security    | -------->|  Analysis, Rules &    | -------->|    Log Storage &      |
-|        Logs)          |  Agent   |   Alert Generation    |          |       Indexing        |
-+-----------------------+          +-----------------------+          +-----------------------+
-                                                                                  |
-                                                                                  v
-+-----------------------+          +-----------------------+          +-----------------------+
-|      SOC Analyst      |          |        Kibana         |          |       Filebeat        |
-|  Threat Hunting,      | <--------|    Dashboards &       | <--------|    (Internal Data     |
-|  Alerts, Compliance   |          |    Visualizations     |          |       Shipper)        |
-+-----------------------+          +-----------------------+          +-----------------------+
 
 
 ## Dashboard Screenshots
